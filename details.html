@@ -19,6 +19,20 @@
         <button type="submit" class="button delete-button">Delete</button>
       </form>
     </div>
+    <div class="user-posts">
+      <h2>Posts</h2>
+      <ul>
+        {% for post in posts %}
+          <li>
+            <a href="{{ url_for('show_post', post_id=post.id) }}">{{ post.title }}</a>
+            <!-- Optionally show a preview or the date of the post here -->
+          </li>
+        {% else %}
+          <li>No posts yet.</li>
+        {% endfor %}
+      </ul>
+      <a href="{{ url_for('add_post', user_id=user.id) }}" class="button">Add Post</a>
+    </div>    
   </div>
   <a href="{{ url_for('list_users') }}" class="back-link">Go Back</a>
   
